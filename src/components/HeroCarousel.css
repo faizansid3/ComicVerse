@@ -1,0 +1,107 @@
+/* HERO area */
+.hero-area {
+  padding: 90px 0 72px;
+  color: #fff;
+}
+
+/* wrapper centered, fixed width for 3 cards */
+.carousel-wrapper {
+  margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 970px;          /* <-- this now WORKS */
+  overflow: hidden;
+  padding: 0 8px;
+}
+
+/* slick internals */
+.slick-list { overflow: hidden !important; }
+.slick-track {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  align-items: center;
+}
+
+/* slide wrapper */
+.slick-slide-wrap {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+}
+
+/* CARD */
+.card {
+  width: 300px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #111;
+  transform: scale(0.82);
+  opacity: 0.55;
+  transition: transform .32s ease, opacity .32s ease, box-shadow .32s ease;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.5);
+}
+
+.slick-center .card {
+  transform: scale(1);
+  opacity: 1;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info text */
+.card-info {
+  position: absolute;
+  left: 16px;
+  bottom: 14px;
+  color: white;
+  text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+.card-info h3 { margin:0; font-family: "Bangers", cursive; font-size: 1.6rem; }
+.card-info p { margin:6px 0 0; font-size: 1rem; opacity: 0.95; }
+
+/* arrows */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  font-size: 2.8rem;
+  width: 52px;
+  height: 64px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity .18s ease, transform .12s ease;
+}
+
+.nav-arrow.left { left: 8px; }
+.nav-arrow.right { right: 8px; }
+
+.carousel-wrapper:hover .nav-arrow { opacity: 0.96; }
+.nav-arrow:hover { transform: translateY(-50%) scale(1.05); }
+
+/* responsive */
+@media (max-width: 1200px) {
+  .card { width: 280px; height: 400px; }
+  .carousel-wrapper { max-width: calc(2 * 280px + 1 * 16px); }
+}
+
+@media (max-width: 900px) {
+  .card { width: 82vw; height: 60vh; transform: scale(1); opacity: 1; }
+  .carousel-wrapper { max-width: 100%; padding: 0 12px; }
+  .nav-arrow { display: none; }
+}

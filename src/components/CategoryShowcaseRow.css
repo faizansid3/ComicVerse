@@ -1,0 +1,320 @@
+/* ============ FULL ROW ============ */
+.csr-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 1180px;
+  margin: 40px auto;
+  padding: 28px;
+}
+
+
+
+/* ============ LEFT CATEGORY BOX ============ */
+/* ============ LEFT CATEGORY BOX (Transparent Always) ============ */
+.csr-left {
+  width: 260px;
+  height: 330px;
+  border-radius: 22px;
+  background: transparent !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 35px;
+  transition: transform .35s ease;
+}
+
+/* Remove previous border glow */
+.csr-left::before {
+  display: none !important;
+}
+
+/* ============ LOGO ============ */
+.csr-logo {
+  width: 140px;
+  height: auto;
+  transition: transform .3s ease, filter .3s ease;
+  pointer-events: none;
+}
+
+/* LOGO GLOWS instead of box */
+.csr-left-dc:hover .csr-logo {
+  filter: drop-shadow(0 0 18px rgba(33,150,243,0.9));
+  transform: scale(1.08);
+}
+
+.csr-left-marvel:hover .csr-logo {
+  filter: drop-shadow(0 0 18px rgba(255,0,0,0.9));
+  transform: scale(1.08);
+}
+
+.csr-left-anime:hover .csr-logo {
+  filter: drop-shadow(0 0 18px rgba(255,255,255,1));
+  transform: scale(1.08);
+}
+
+/* ============ TEXT ============ */
+.csr-desc {
+  margin-top: 16px;
+  color: white;
+  font-size: 1.05rem;
+  opacity: 0.85;
+  text-align: center;
+  max-width: 220px;
+  line-height: 1.25;
+}
+
+/* ============ Browse button ============ */
+.csr-left-browse {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  padding: 10px 20px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, #ff5a5a, #ffd54f);
+  font-weight: bold;
+  text-decoration: none;
+  color: #111;
+  opacity: 0;
+  transition: opacity .32s ease, transform .32s ease;
+}
+
+.csr-left:hover .csr-left-browse {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+
+/* ============ CENTER CARD AREA ============ */
+.csr-card-area {
+  flex: 1;
+  display: flex;
+  gap: 28px;
+  margin-left: 100px; 
+}
+
+
+
+
+/* ============ CARD ============ */
+.csr-card {
+  width: 200px;
+  height: 330px;
+  border-radius: 16px;
+  position: relative;
+  overflow: visible;
+  cursor: pointer;
+  transition: transform .3s ease, filter .3s ease;
+  transform-style: preserve-3d;
+}
+
+.csr-card:hover {
+  transform: translateY(-10px) scale(1.03);
+  filter: brightness(0.75);
+}
+
+.csr-card-cover {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background-image: var(--csr-card-img);
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.csr-card-info {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 3;
+  color: white;
+  text-shadow: 0 4px 14px rgba(0,0,0,0.7);
+}
+
+.csr-card-info h3 {
+  margin: 0;
+  font-family: "Bangers", cursive;
+}
+
+
+
+/* ============ MINI PAGE FRAGMENTS ============ */
+.csr-mini-pages {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.csr-mini-page {
+  position: absolute;
+  width: 60px;
+  height: 80px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(.8);
+  filter: brightness(1.3);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+  transition: transform .45s ease, opacity .3s ease;
+}
+
+/* explosion patterns */
+.csr-card:hover .csr-mini-page:nth-child(1) {
+  opacity:1; transform: translate(-60px, -60px) rotate(-8deg) scale(1);
+}
+.csr-card:hover .csr-mini-page:nth-child(2) {
+  opacity:1; transform: translate(60px, -40px) rotate(6deg) scale(1);
+}
+.csr-card:hover .csr-mini-page:nth-child(3) {
+  opacity:1; transform: translate(-20px, -90px) rotate(-12deg) scale(1.1);
+}
+.csr-card:hover .csr-mini-page:nth-child(4) {
+  opacity:1; transform: translate(80px, 50px) rotate(12deg) scale(.95);
+}
+.csr-card:hover .csr-mini-page:nth-child(5) {
+  opacity:1; transform: translate(-40px, 60px) rotate(-6deg) scale(.9);
+}
+.csr-card:hover .csr-mini-page:nth-child(6) {
+  opacity:1; transform: translate(40px, -120px) rotate(8deg) scale(1);
+}
+
+
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .csr-row { flex-direction: column; }
+  .csr-card-area { flex-direction: column; }
+}
+
+
+.csr-card:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2) rotate(-10deg);
+}
+
+.csr-card.csr-dc::after {
+  content: "POW!";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.1);
+  font-family: "Bangers", cursive;
+  font-size: 3rem;
+  color: #ffeb3b;
+  text-shadow: 0 0 12px #ff5722, 0 0 22px #ff9800;
+  opacity: 0;
+  z-index: 20;
+  transition: opacity .35s, transform .35s;
+}
+
+.csr-card.csr-dc:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.2) rotate(-6deg);
+}
+/* MARVEL — Red Energy Border Glow */
+.csr-card.csr-marvel {
+  box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.0);
+  transition: box-shadow .25s ease, transform .25s ease;
+  border-radius: 16px;
+}
+
+.csr-card.csr-marvel:hover {
+  transform: translateY(-10px) scale(1.04);
+  box-shadow:
+    0 0 12px rgba(255,0,0,0.7),
+    0 0 22px rgba(255,0,0,0.6),
+    0 0 40px rgba(255,0,0,0.4);
+}
+
+/* Optional: subtle red halo behind the card */
+.csr-card.csr-marvel::after {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 20px;
+  background: rgba(255,0,0,0.25);
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity .25s ease;
+  z-index: 0;
+}
+
+.csr-card.csr-marvel:hover::after {
+  opacity: 1;
+}
+/* ANIME — Speedline Border */
+.csr-card.csr-anime::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 20px;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.25) 0,
+    rgba(255,255,255,0.25) 2px,
+    transparent 2px,
+    transparent 6px
+  );
+  opacity: 0;
+  transform: scale(1.2);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.csr-card.csr-anime:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Anime impact text */
+.csr-card.csr-anime::before {
+  content: "ドン!!";
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px black;
+  opacity: 0;
+  transform: scale(0.4) rotate(-5deg);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 20;
+}
+
+.csr-card.csr-anime:hover::before {
+  opacity: 1;
+  transform: scale(1) rotate(-2deg);
+}
+
+.csr-logo {
+  width: 120px;
+  height: auto;
+  display: block;
+  margin: 40px auto 0 auto;
+  opacity: 1;
+  transition: transform .3s ease;
+}
+
+.csr-left:hover .csr-logo {
+  transform: scale(1.1);
+}
+
+/* Move button under logo */
+.csr-left-browse {
+  bottom: 25px !important;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+}
+
+.csr-left:hover .csr-left-browse {
+  transform: translateX(-50%) translateY(0);
+}

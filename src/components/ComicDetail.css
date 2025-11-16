@@ -1,0 +1,142 @@
+/* PAGE BACKGROUND */
+.detail-main-bg {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(180deg, #0d0d0f 0%, #1a1024 100%);
+  display: flex;
+  justify-content: center;
+  padding: 80px 0;
+  padding-top: 120px;
+}
+
+/* MAIN CONTENT LAYOUT */
+.detail-container {
+  display: flex;
+  width: 85%;
+  max-width: 1300px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 50px;
+  color: #fff;
+}
+
+/* LEFT CONTENT */
+.detail-left {
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail-title {
+  font-size: 42px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.detail-meta p {
+  font-size: 17px;
+  margin: 3px 0;
+  color: #c7c7c7;
+}
+
+.detail-price {
+  margin-top: 20px;
+  color: #ffce45;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.detail-desc {
+  margin-top: 10px;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 90%;
+  color: #e0e0e0;
+}
+
+/* RIGHT IMAGE */
+.detail-right {
+  flex: 0.9;
+  display: flex;
+  justify-content: center;
+}
+
+.detail-img {
+  width: 100%;
+  max-width: 340px;   /* REDUCED */
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  transition: .3s ease;
+}
+
+.detail-img:hover {
+  transform: scale(1.05);
+}
+
+/* BUTTON */
+.add-cart-btn {
+  margin-top: 20px;
+  padding: 14px 32px;
+  background: #ffce45;
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  transition: 0.25s ease-in-out;
+}
+
+.add-cart-btn:hover {
+  background: #ffe58a;
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .detail-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .detail-right img {
+    margin-bottom: 30px;
+  }
+
+  .detail-left {
+    align-items: center;
+  }
+
+  .detail-desc {
+    max-width: 100%;
+  }
+}
+
+
+.flash-success {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  background: #22c55e;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  animation: fadeInOut 2s ease;
+  z-index: 9999;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}

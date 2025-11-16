@@ -1,0 +1,31 @@
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden !important;
+  font-family: sans-serif;
+}
+
+/* ========== GLOBAL BACKGROUND THEME ========== */
+/* Matches Navbar gradient → transitions into dark comic black */
+body {
+  background: linear-gradient(
+    to bottom,
+    #d50000 0%,
+    #ff9800 18%,
+    #ffea00 32%,
+    #111 65%
+  );
+  background-attachment: fixed;
+  color: #fff;
+}
+
+/* Root wrapper */
+.app-root {
+  min-height: 100vh;
+}

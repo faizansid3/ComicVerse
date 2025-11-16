@@ -1,0 +1,122 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden !important;
+  background: #000 !important;
+}
+
+
+
+/* =========================
+   LAYOUT FIXES
+========================= */
+
+/* Entire wrapper */
+.app-root {
+  width: 100%;
+  min-height: 0 !important;   /* prevents footer pushing */
+  display: block;
+}
+
+/* Main content area */
+.main-content {
+  padding-top: calc(var(--nav-h) + 18px);
+  padding-bottom: 0 !important;
+  width: 100%;
+}
+
+
+
+/* =========================
+   ORANGE GLOW EFFECT
+========================= */
+
+.glow-orange {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255,140,0,0.55),
+    rgba(0,0,0,0)
+  );
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+
+/* =========================
+   WELCOME HEADER
+========================= */
+
+.welcome-hero-title {
+  text-align: center;
+  font-family: "Bangers", sans-serif;
+  font-size: 3.8rem;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-shadow: 4px 4px #000;
+  letter-spacing: 3px;
+  line-height: 1.2;
+}
+
+.welcome-hero-tagline {
+  text-align: center;
+  font-size: 1.4rem;
+  font-family: "Comic Neue", sans-serif;
+  color: #ffe9a9;
+  margin-bottom: 40px;
+  text-shadow: 2px 2px #000;
+}
+
+
+
+/* =========================
+   COLLECTION SECTION
+========================= */
+
+.collection-heading {
+  text-align: center;
+  font-family: "Bangers", sans-serif;
+  font-size: 3.4rem;
+  color: white;
+  margin: 80px 0 40px 0;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px black;
+}
+
+
+
+/* =========================
+   FIX SLICK CAROUSEL OVERFLOW
+========================= */
+
+.slick-slider,
+.slick-list,
+.slick-track {
+  overflow: hidden !important;
+}
+
+
+
+/* =========================
+   FOOTER FIX
+========================= */
+
+footer {
+  margin-bottom: 0 !important;
+  padding-bottom: 30px;
+  background: #000;
+}

@@ -1,0 +1,144 @@
+:root { --nav-h: 78px; }
+
+/* ================= NAVBAR BASE ================= */
+.comic-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-h);
+  padding: 0 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  z-index: 9999;
+
+  background: linear-gradient(
+    to left,
+    #f28b26 0%,
+    #d46518 25%,
+    #b13a0d 55%,
+    #4e0000 80%,
+    #000000 100%
+  );
+
+  box-shadow:
+    0 0 12px rgba(255,120,0,0.25),
+    inset 0 0 15px rgba(255,130,0,0.15),
+    0 4px 10px rgba(0,0,0,0.35);
+
+  backdrop-filter: blur(2px);
+}
+
+/* ========== LOGO ========== */
+.navbar-logo {
+  font-family: "Bangers", cursive;
+  font-size: 2.3rem;
+  color: #fff;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 6px rgba(255,255,255,0.6),
+    0 0 10px rgba(255,180,0,0.4);
+  white-space: nowrap;
+}
+
+.navbar-logo span {
+  color: #000;
+}
+
+/* ========== LINKS ========== */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.navbar-links a {
+  font-family: "Bangers", cursive;
+  color: #fff;
+  font-size: 1.4rem;
+  text-decoration: none;
+  text-shadow:
+    0 0 4px rgba(255,255,255,0.6),
+    0 0 8px rgba(255,150,0,0.2);
+  transition: 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffdc5c;
+  transform: scale(1.1);
+  text-shadow:
+    0 0 10px #ffdc5c,
+    0 0 14px #ff9800;
+}
+
+/* Divider */
+.nav-divider {
+  width: 2px;
+  height: 22px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 4px;
+}
+
+/* ========================================================= */
+/* ================= RESPONSIVE MOBILE MODE ================= */
+/* ========================================================= */
+
+/* Force stacking layout */
+@media (max-width: 700px) {
+  .comic-navbar {
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 0 18px;
+    gap: 10px;
+  }
+
+  .navbar-logo {
+    font-size: 2rem;
+  }
+
+  .navbar-links {
+    gap: 16px;
+  }
+
+  .navbar-links a {
+    font-size: 1.2rem;
+  }
+
+  .nav-divider {
+    height: 18px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 450px) {
+  .navbar-logo {
+    font-size: 1.6rem;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+  }
+
+  .navbar-links {
+    gap: 12px;
+  }
+}
+
+/* Very tiny screens */
+@media (max-width: 350px) {
+  .navbar-logo {
+    font-size: 1.4rem;
+  }
+
+  .navbar-links a {
+    font-size: 0.9rem;
+  }
+
+  .navbar-links {
+    gap: 8px;
+  }
+}
