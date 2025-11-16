@@ -9,6 +9,8 @@ export default function Cart() {
   const [cart, setCart] = useState([]);
   const [flash, setFlash] = useState("");
 
+  const BASE = import.meta.env.BASE_URL || "/";
+
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(saved);
@@ -20,7 +22,7 @@ export default function Cart() {
   };
 
   const increaseQty = (id) => {
-    const updated = cart.map(item =>
+    const updated = cart.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
     updateLocalStorage(updated);
@@ -28,20 +30,25 @@ export default function Cart() {
 
   const decreaseQty = (id) => {
     const updated = cart
-      .map(item =>
-        item.id === id ? { ...item, quantity: Math.max(1, item.quantity - 1) } : item
+      .map((item) =>
+        item.id === id
+          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+          : item
       )
-      .filter(item => item.quantity > 0);
+      .filter((item) => item.quantity > 0);
 
     updateLocalStorage(updated);
   };
 
   const removeItem = (id) => {
-    const updated = cart.filter(item => item.id !== id);
+    const updated = cart.filter((item) => item.id !== id);
     updateLocalStorage(updated);
   };
 
-  const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
 
   const checkout = () => {
     if (cart.length === 0) {
@@ -76,7 +83,15 @@ export default function Cart() {
         ) : (
           cart.map((item) => (
             <div className="cart-item" key={item.id}>
-              <img src={item.poster_url} className="cart-img" alt={item.title} />
+              <img
+                src={
+                  item.poster_url
+                    ? item.poster_url
+                    : `${BASE}images/default-placeholder.jpg`
+                }
+                className="cart-img"
+                alt={item.title}
+              />
 
               <div className="cart-details">
                 <h3>{item.title}</h3>
@@ -102,10 +117,7 @@ export default function Cart() {
             <button className="checkout-btn" onClick={checkout}>
               Checkout
             </button>
-            <button 
-              className="add-items-btn"
-              onClick={() => navigate("/browse")}
-            >
+            <button className="add-items-btn" onClick={() => navigate("/browse")}>
               Add More Items
             </button>
           </div>

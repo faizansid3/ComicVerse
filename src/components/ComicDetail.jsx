@@ -7,14 +7,17 @@ export default function ComicDetail() {
   const [comic, setComic] = useState(null);
   const [flash, setFlash] = useState(false);
 
+  const BASE = import.meta.env.BASE_URL || "/";
+
   useEffect(() => {
-    fetch("/constant/data.json")
+    fetch(`${BASE}constant/data.json`)
       .then((res) => res.json())
       .then((data) => {
         const found = data.find((c) => Number(c.id) === Number(id));
         setComic(found);
-      });
-  }, [id]);
+      })
+      .catch((err) => console.error("JSON load error:", err));
+  }, [id, BASE]);
 
   const showFlash = () => {
     setFlash(true);
@@ -67,7 +70,11 @@ export default function ComicDetail() {
 
         <div className="detail-right">
           <img
-            src={comic.poster_url}
+            src={
+              comic.poster_url
+                ? comic.poster_url
+                : `${BASE}images/default-placeholder.jpg`
+            }
             alt={comic.title}
             className="detail-img"
           />
