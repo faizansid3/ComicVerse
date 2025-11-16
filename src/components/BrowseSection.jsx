@@ -15,6 +15,8 @@ export default function BrowseSection() {
   const [genre, setGenre] = useState("ALL");
   const [character, setCharacter] = useState("ALL");
 
+  const BASE = import.meta.env.BASE_URL || "/";
+
   const CHARACTER_LIST = [
     "All Might","Anya Forger","Aquaman","Armin","Asta","Bakugo","Batman",
     "Beast Boy","Black Panther","Boruto","Bucky Barnes","Captain America","Catwoman",
@@ -33,17 +35,18 @@ export default function BrowseSection() {
     "Horror","Mythology","Sci-Fi","Sports","Superhero","Supernatural","Thriller"
   ];
 
-  // Load JSON
+  // Load comics JSON correctly for GitHub Pages
   useEffect(() => {
-    fetch("/constant/data.json")
+    fetch(`${BASE}constant/data.json`)
       .then((res) => res.json())
       .then((data) => {
         setAllComics(data);
         setComics(data);
-      });
-  }, []);
+      })
+      .catch((err) => console.error("BrowseSection JSON Load Error:", err));
+  }, [BASE]);
 
-  // Apply all filters dynamically
+  // Apply filters dynamically
   useEffect(() => {
     let filtered = [...allComics];
 
